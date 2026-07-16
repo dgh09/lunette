@@ -1,0 +1,21 @@
+# Dependencias
+node_modules/
+
+# Entorno y secretos
+.env
+.env.local
+.env.*.local
+.env.test
+
+# Build / artefactos
+.next/
+.medusa/
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Varios
+.DS_Store
+*.log
+npm-debug.log*

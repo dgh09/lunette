@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Allura&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --primary: 0 41% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 50% 98%;
+    --secondary-foreground: 0 41% 39%;
+    --muted: 30 20% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 60% 94%;
+    --accent-foreground: 0 41% 39%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 10% 90%;
+    --input: 0 10% 90%;
+    --ring: 0 41% 39%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+    --primary: 0 41% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 10% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 10% 20%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 30% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 10% 20%;
+    --input: 0 10% 20%;
+    --ring: 0 41% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Logo text styles */
+.logo-main {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #8B3A3A;
+}
+
+.logo-script {
+  font-family: 'Allura', cursive;
+  color: #8B3A3A;
+}

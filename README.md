@@ -1,41 +1,41 @@
-# Lunette — Demo E-commerce
+# Lunette — E-commerce Demo
 
-Tienda de moda femenina **de demostración**, construida como ejercicio full-stack
-y usada como aplicación de referencia para desplegar sobre Kubernetes con GitOps
-(ver [eks-gitops-platform](https://github.com/dgh09/eks-gitops-platform)).
+A **demo** women's fashion store, built as a full-stack exercise and used as a
+reference application for deploying to Kubernetes with GitOps (see
+[eks-gitops-platform](https://github.com/dgh09/eks-gitops-platform)).
 
-> Marca, catálogo e imágenes son **ficticios**. Las fotos provienen de
-> [Unsplash](https://unsplash.com) (licencia libre). No representa a ninguna
-> tienda real.
+> Brand, catalog, and images are **fictional**. Photos come from
+> [Unsplash](https://unsplash.com) (free license). This does not represent any
+> real store.
 
 ## Stack
 
-| Capa | Tecnología |
-|------|------------|
+| Layer | Technology |
+|-------|------------|
 | Storefront | Next.js 14 (App Router), Tailwind CSS, Radix UI |
 | Backend | Medusa 2 (headless commerce) |
-| Datos | PostgreSQL |
+| Data | PostgreSQL |
 | Auth | NextAuth (credentials) |
-| Empaquetado | Docker (multi-stage, output standalone) |
+| Packaging | Docker (multi-stage, standalone output) |
 
-## Estructura
+## Structure
 
 ```
 lunette/
-├── storefront/   # Next.js — la tienda (consume la Store API de Medusa)
-└── backend/      # Medusa — catálogo, pedidos, admin
+├── storefront/   # Next.js — the store (consumes Medusa's Store API)
+└── backend/      # Medusa — catalog, orders, admin
 ```
 
-## Desarrollo local
+## Local development
 
-Cada subproyecto tiene su propio `.env.example`. En resumen:
+Each subproject has its own `.env.example`. In short:
 
 ```bash
-# Backend (Medusa) — requiere PostgreSQL
+# Backend (Medusa) — requires PostgreSQL
 cd backend
 npm install
 npx medusa db:migrate
-npm run seed          # carga catálogo demo
+npm run seed          # loads the demo catalog
 npm run dev           # http://localhost:9000
 
 # Storefront (Next.js)
@@ -44,12 +44,12 @@ npm install
 npm run dev           # http://localhost:3000
 ```
 
-El storefront lee el catálogo de la Store API de Medusa vía
-`NEXT_PUBLIC_MEDUSA_URL` y `NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY`.
+The storefront reads the catalog from Medusa's Store API via
+`NEXT_PUBLIC_MEDUSA_URL` and `NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY`.
 
-## Despliegue
+## Deployment
 
-El storefront se empaqueta con el `Dockerfile` de `storefront/` (Next.js
-standalone). El objetivo es desplegar el stack completo (storefront + Medusa +
-PostgreSQL) sobre Kubernetes vía GitOps con ArgoCD, en
+The storefront is packaged with the `Dockerfile` in `storefront/` (Next.js
+standalone output). The goal is to deploy the full stack (storefront + Medusa +
+PostgreSQL) to Kubernetes via GitOps with ArgoCD, in
 [eks-gitops-platform](https://github.com/dgh09/eks-gitops-platform).

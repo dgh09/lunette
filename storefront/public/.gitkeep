@@ -1,0 +1,4 @@
+# Mantiene el directorio public/ en el repo (git no versiona carpetas vacías).
+# Las imágenes de la tienda se sirven desde Unsplash; este dir queda para
+# assets estáticos futuros (favicon, etc.) y para que el COPY del Dockerfile
+# lo encuentre en un checkout limpio.

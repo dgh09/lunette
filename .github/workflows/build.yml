@@ -15,6 +15,11 @@ permissions:
   contents: read
   packages: write
 
+# Un push nuevo cancela el run anterior en curso (evita builds colgados apilados).
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -56,5 +61,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha,scope=${{ matrix.name }}
-          cache-to: type=gha,mode=max,scope=${{ matrix.name }}
+          # Sin cache gha: exportar las capas grandes de Medusa a mode=max se
+          # atascaba (>30 min). Un build limpio en el runner es más fiable (~5-8 min).
+          provenance: false
